@@ -22,6 +22,7 @@ import com.example.edustaz.ui.screen.olympiad.TestPage
 import com.example.edustaz.ui.screen.profile.AddMaterialsPage
 import com.example.edustaz.ui.screen.profile.ProfilePage
 import com.example.edustaz.ui.screen.profile.ProfileViewModel
+import com.example.edustaz.ui.screen.profile.TirkeluPage
 
 @Composable
 fun AppNavGraph(navController: NavHostController) {
@@ -100,6 +101,14 @@ fun AppNavGraph(navController: NavHostController) {
                 title = "Профиль",
                 navController = navController,
                 viewModel = profileViewModel
+            )
+        }
+        composable("tirkelu/{type}") {
+            val type = it.arguments?.getBoolean("type")
+            TirkeluPage(
+                title = "Профиль",
+                navController = navController,
+                type = type == true
             )
         }
     }

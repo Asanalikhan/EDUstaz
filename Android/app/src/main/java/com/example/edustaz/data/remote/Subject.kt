@@ -17,5 +17,6 @@ enum class Subject {
     Chemistry,
     Psychology,
     Russian,
-    Pedagogy
+    Pedagogy,
+    General
 }

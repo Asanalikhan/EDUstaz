@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.RadioButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -139,7 +140,13 @@ fun TestPage(
                             }
                         }
                     } else {
-                        Text("Загрузка вопросов...", fontSize = 16.sp)
+                        Box(
+                            modifier = Modifier
+                                .fillMaxSize(),
+                            contentAlignment = Alignment.Center
+                        ){
+                            CircularProgressIndicator()
+                        }
                     }
                 }
 
@@ -213,7 +220,7 @@ private fun subjectFromKazakhName(name: String): Subject? {
         "Психология" -> Subject.Psychology
         "Орыс тілі" -> Subject.Russian
         "Педагогика" -> Subject.Pedagogy
-        else -> null
+        else -> Subject.General
     }
 }
 

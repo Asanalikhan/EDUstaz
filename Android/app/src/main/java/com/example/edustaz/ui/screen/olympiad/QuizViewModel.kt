@@ -44,8 +44,6 @@ class QuizViewModel : ViewModel() {
         if (subject != null) {
             _subject = subject
             questions = getQuestions(subject)
-            Log.d("QuizViewModel", "Questions: $subject")
-            Log.d("QuizViewModel", "Questions: $questions")
             currentQuestionIndex = 0
             selectedAnswers.clear()
         }

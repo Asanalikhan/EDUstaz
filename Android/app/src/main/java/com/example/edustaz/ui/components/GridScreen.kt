@@ -25,11 +25,14 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.example.edustaz.R
 import com.example.edustaz.ui.theme.MontserratFont
 
 @Composable
-fun GridScreen() {
+fun GridScreen(
+    navController: NavController
+) {
     val titles =
         listOf("Аттестатицяға дайындық", "Курстар", "Материалдар", "Олимпиада") // Example items
     val images = listOf(
@@ -46,19 +49,33 @@ fun GridScreen() {
             .padding(18.dp)
     ) {
         items(titles.zip(images)) { (title, icon) ->
-            GridItem(iconRes = icon, text = title)
+            GridItem(iconRes = icon, text = title, navController)
         }
     }
 }
 
 @Composable
-private fun GridItem(iconRes: Int, text: String) {
+private fun GridItem(
+    iconRes: Int,
+    text: String,
+    navController: NavController) {
     Card(
         modifier = Modifier
             .fillMaxWidth()
             .height(75.dp)
             .padding(8.dp),
-        shape = RoundedCornerShape(5.dp)
+        shape = RoundedCornerShape(5.dp),
+        onClick = {
+            if(text == "Аттестатицяға дайындық") {
+                navController.navigate("atestat")
+            } else if(text == "Курстар") {
+                navController.navigate("course")
+            } else if(text == "Материалдар") {
+                navController.navigate("materials")
+            } else if(text == "Олимпиада") {
+                navController.navigate("olympiad")
+            }
+        }
     ) {
         Row(
             modifier = Modifier

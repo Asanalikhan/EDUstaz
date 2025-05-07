@@ -23,6 +23,7 @@ object QuestionBank {
             Subject.Psychology -> psychologyQuestions + generalQuestions
             Subject.Russian -> russianQuestions + generalQuestions
             Subject.Pedagogy -> pedagogyQuestions + generalQuestions
+            else -> generalQuestions
         }
     }
 

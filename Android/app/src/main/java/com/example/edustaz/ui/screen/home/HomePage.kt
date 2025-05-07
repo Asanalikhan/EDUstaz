@@ -80,7 +80,7 @@ fun HomePage(
             )
             Spacer(modifier = Modifier.height(16.dp))
             InfiniteMaterialList(materials = sampleMaterials)
-            GridScreen()
+            GridScreen(navController)
             Timer()
             Column(
                 modifier = Modifier

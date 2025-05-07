@@ -125,9 +125,19 @@ fun ProfilePage(
                     Section(R.drawable.ic_materials, "Материалдарым", onClick = {
                         navController.navigate("addMaterials")
                     })
-                    Section(R.drawable.ic_course, "Курстарым", onClick = {})
-                    Section(R.drawable.ic_olympiad, "Олимпиадаларым", onClick = {})
-                    Section(R.drawable.mi_notification, "Шығу", onClick = {})
+                    Section(R.drawable.ic_course, "Курстарым", onClick = {
+                        navController.navigate("tirkelu/${false}")
+                    })
+                    Section(R.drawable.ic_olympiad, "Олимпиадаларым", onClick = {
+                        navController.navigate("tirkelu/${true}")
+                    })
+                    Section(R.drawable.ic_exit, "Шығу", onClick = {
+                        navController.navigate("login") {
+                            popUpTo("login") {
+                                inclusive = true
+                            }
+                        }
+                    })
 
                     Column(
                         modifier = Modifier.fillMaxSize(),
