@@ -24,7 +24,7 @@ fun NumberedList() {
         text = "Қатысу нұсқаулығы",
         fontFamily = MontserratFont,
         fontWeight = FontWeight.Medium,
-        fontSize = 16.sp,
+        fontSize = 13.sp,
         color = Color.Green,
         modifier = Modifier.padding(16.dp, 5.dp)
     )
@@ -36,13 +36,13 @@ fun NumberedList() {
                     text = "${index + 1}. ",
                     fontFamily = MontserratFont,
                     fontWeight = FontWeight.Normal,
-                    fontSize = 13.sp
+                    fontSize = 11.sp
                 )
                 Text(
                     text = text,
                     fontFamily = MontserratFont,
                     fontWeight = FontWeight.Normal,
-                    fontSize = 13.sp
+                    fontSize = 11.sp
                 )
             }
         }

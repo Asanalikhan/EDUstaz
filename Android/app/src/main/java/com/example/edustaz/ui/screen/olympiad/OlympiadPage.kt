@@ -1,5 +1,6 @@
 package com.example.edustaz.ui.screen.olympiad
 
+import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -111,7 +112,15 @@ fun OlympiadPage(
                 OlympiadDetailed(
                     subject = selectedOption!!,
                     type = selectedType == "Ұстаздар",
-                    onBack = { selectedOption = null }
+                    onBack = { selectedOption = null },
+                    onOlympiadTest = {
+                        Log.d("OlympiadPage", "Selected subject: $selectedOption")
+                        navController.navigate("test/Олимпиада/$selectedOption") {
+                            popUpTo("olympiad") {
+                                inclusive = true
+                            }
+                        }
+                    },
                 )
             }
         }

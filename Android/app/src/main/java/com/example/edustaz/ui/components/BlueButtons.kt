@@ -50,7 +50,7 @@ fun BlueButtons(list: List<String>) {
                             text = item,
                             fontFamily = MontserratFont,
                             fontWeight = FontWeight.Medium,
-                            fontSize = 11.sp,
+                            fontSize = 12.sp,
                             textAlign = TextAlign.Center,
                         )
 

@@ -10,6 +10,8 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material3.Icon
@@ -42,14 +44,21 @@ private var descList = listOf(
 )
 
 @Composable
-fun OlympiadDetailed(subject: String, type: Boolean, onBack: () -> Unit) {
+fun OlympiadDetailed(
+    subject: String,
+    type: Boolean,
+    onBack: () -> Unit,
+    onOlympiadTest: () -> Unit
+) {
 
     var clicked by remember { mutableStateOf(false) }
+    val scrollState = rememberScrollState()
 
     Column(
         modifier = Modifier
             .fillMaxSize()
             .padding(20.dp, 15.dp)
+            .verticalScroll(scrollState)
             .background(Color.White),
     ) {
         Row(
@@ -86,7 +95,10 @@ fun OlympiadDetailed(subject: String, type: Boolean, onBack: () -> Unit) {
         }
 
         if (clicked) {
-            Qatyshushy(onItemClick = { clicked = false })
+            Qatyshushy(
+                onItemClick = { clicked = false },
+                onStartOlympiad = { onOlympiadTest() }
+            )
         } else {
             Box(
                 modifier = Modifier

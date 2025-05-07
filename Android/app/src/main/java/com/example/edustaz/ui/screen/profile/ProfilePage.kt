@@ -122,7 +122,9 @@ fun ProfilePage(
                     )
 
                     Spacer(modifier = Modifier.height(40.dp))
-                    Section(R.drawable.ic_materials, "Материалдарым", onClick = {})
+                    Section(R.drawable.ic_materials, "Материалдарым", onClick = {
+                        navController.navigate("addMaterials")
+                    })
                     Section(R.drawable.ic_course, "Курстарым", onClick = {})
                     Section(R.drawable.ic_olympiad, "Олимпиадаларым", onClick = {})
                     Section(R.drawable.mi_notification, "Шығу", onClick = {})

@@ -1,5 +1,6 @@
 package com.example.edustaz.ui.screen.atestat
 
+import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -50,6 +51,7 @@ fun AtestatPage(
         "Еңбек", "Химия", "Психология", "Орыс тілі",
         "Педагогика", "Тексеру"
     )
+
     Scaffold(
         modifier = Modifier
             .fillMaxSize()
@@ -69,7 +71,6 @@ fun AtestatPage(
             )
         }
     ) { values ->
-
         if (isClicked) {
             Box(
                 modifier = Modifier
@@ -86,7 +87,8 @@ fun AtestatPage(
                         subject = detailed,
                         onBack = { isClicked = false },
                         onStartTest = {
-                            navController.navigate("test")
+                            Log.d("AtestatPage", "Selected subject: $detailed")
+                            navController.navigate("test/Аттестация/$detailed")
                         }
                     )
                 }
@@ -155,4 +157,5 @@ fun SubjectCard(subject: String, onClick: (String) -> Unit) {
             }
         }
     }
+
 }

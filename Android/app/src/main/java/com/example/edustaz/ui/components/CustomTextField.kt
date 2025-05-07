@@ -9,17 +9,27 @@ import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import com.example.edustaz.ui.theme.MontserratFont
 
 @Composable
 fun CustomTextField(value: String, onValueChange: (String) -> Unit) {
     OutlinedTextField(
         value = value,
         onValueChange = onValueChange,
-        label = { Text("Қатысушы аты-жөнін сақтаңыз") },
+        label = {
+            Text(
+                text = "Қатысушы аты-жөнін сақтаңыз",
+                fontFamily = MontserratFont,
+                fontWeight = FontWeight.Normal,
+                fontSize = 10.sp
+            )
+                },
         modifier = Modifier
             .fillMaxWidth()
-            .padding(20.dp),
+            .padding(start = 15.dp, top = 12.dp, bottom = 12.dp),
         singleLine = true,
         shape = RoundedCornerShape(10.dp),
         colors = TextFieldDefaults.colors(

@@ -25,12 +25,19 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.edustaz.data.model.ItemTest
 import com.example.edustaz.ui.theme.MontserratFont
+import kotlin.random.Random
 
 @Composable
-fun Qatyshushy(onItemClick: () -> Unit) {
+fun Qatyshushy(
+    onItemClick: () -> Unit,
+    onStartOlympiad: () -> Unit,
+) {
 
     var text by remember { mutableStateOf("") }
+    var itemList by remember { mutableStateOf(listOf<ItemTest>()) }
+    var showDialog by remember { mutableStateOf(false) }
 
     Card(
         modifier = Modifier
@@ -43,7 +50,7 @@ fun Qatyshushy(onItemClick: () -> Unit) {
         Spacer(modifier = Modifier.height(9.dp))
         Text(
             text = "Қатысушылар",
-            fontSize = 17.sp,
+            fontSize = 13.sp,
             fontFamily = MontserratFont,
             fontWeight = FontWeight.Medium,
             color = Color(0xFF4741E1),
@@ -54,12 +61,13 @@ fun Qatyshushy(onItemClick: () -> Unit) {
         CustomTextField(text, onValueChange = { text = it })
         Row(
             modifier = Modifier
-                .padding(25.dp, 0.dp, 0.dp, 120.dp)
+                .padding(25.dp, 0.dp, 0.dp, 20.dp)
         ) {
             TextButton(
                 onClick = {
-                    if (text != "") {
-                        onItemClick()
+                    if (text.isNotEmpty()) {
+                        itemList = itemList + ItemTest(text, Random.nextInt(1000, 9999))
+                        text = ""
                     }
                 },
                 modifier = Modifier
@@ -76,7 +84,7 @@ fun Qatyshushy(onItemClick: () -> Unit) {
                     text = "Сақтау",
                     fontFamily = MontserratFont,
                     fontWeight = FontWeight.Normal,
-                    fontSize = 12.sp,
+                    fontSize = 10.sp,
                     color = Color.White
                 )
             }
@@ -97,10 +105,74 @@ fun Qatyshushy(onItemClick: () -> Unit) {
                     text = "Болдырмау",
                     fontFamily = MontserratFont,
                     fontWeight = FontWeight.Normal,
-                    fontSize = 12.sp,
+                    fontSize = 10.sp,
                     color = Color.White
                 )
             }
         }
+
+        Spacer(modifier = Modifier.height(9.dp))
+
+        itemList.forEachIndexed { index, item ->
+            Row {
+                Text(
+                    text = "${index + 1}. ",
+                    fontFamily = MontserratFont,
+                    fontWeight = FontWeight.Medium,
+                    fontSize = 10.sp,
+                    modifier = Modifier.padding(25.dp, 0.dp, 0.dp, 0.dp)
+                )
+                Text(
+                    text = item.name,
+                    fontFamily = MontserratFont,
+                    fontWeight = FontWeight.Medium,
+                    fontSize = 10.sp,
+                    modifier = Modifier.padding(25.dp, 0.dp, 0.dp, 0.dp)
+                )
+                Text(
+                    text = item.code.toString(),
+                    fontFamily = MontserratFont,
+                    fontWeight = FontWeight.Medium,
+                    fontSize = 10.sp,
+                    modifier = Modifier.padding(25.dp, 0.dp, 0.dp, 0.dp)
+                )
+            }
+        }
+
+
+        Spacer(modifier = Modifier.height(20.dp))
+    }
+
+    Spacer(modifier = Modifier.height(16.dp))
+
+    TextButton(
+        onClick = { showDialog = true },
+        modifier = Modifier
+            .fillMaxWidth()
+            .height(40.dp)
+            .padding(horizontal = 25.dp),
+        shape = RoundedCornerShape(5.dp),
+        colors = ButtonDefaults.buttonColors(
+            contentColor = Color.White,
+            containerColor = Color(0xFF4741E1)
+        ),
+        contentPadding = PaddingValues(0.dp)
+    ) {
+        Text(
+            text = "Код еңгізу",
+            fontFamily = MontserratFont,
+            fontWeight = FontWeight.Medium,
+            fontSize = 14.sp,
+            color = Color.White
+        )
+    }
+
+    if (showDialog) {
+        EnterCodePopup(
+            onDismiss = { showDialog = false },
+            onStartOlympiad = { code ->
+                onStartOlympiad()
+            }
+        )
     }
 }
