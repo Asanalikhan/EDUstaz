@@ -5,54 +5,54 @@ import com.google.gson.annotations.SerializedName
 
 data class MaterialResponse(
     @SerializedName("access")
-    val access: Boolean, // false
+    val access: Boolean,
     @SerializedName("approved_at")
-    val approvedAt: Any, // null
+    val approvedAt: Any,
     @SerializedName("class_name")
     val className: ClassName,
     @SerializedName("created_at")
-    val createdAt: String, // 2025-04-12T14:52:13.642094+05:00
+    val createdAt: String,
     @SerializedName("description")
-    val description: String, // 2 сыныпқа арналғаг Информатика пәнінен 4 тоқсанға арналған сабақ жоспары
+    val description: String,
     @SerializedName("download_count")
-    val downloadCount: Int, // 0
+    val downloadCount: Int,
     @SerializedName("group")
     val group: Group,
     @SerializedName("id")
-    val id: Int, // 22
+    val id: Int,
     @SerializedName("price")
-    val price: Int, // 499
+    val price: Int,
     @SerializedName("status")
-    val status: String, // approved
+    val status: String,
     @SerializedName("subject")
     val subject: Subject,
     @SerializedName("title")
-    val title: String, // сабақ жоспары, информатика пәнінен, 2 сынып
+    val title: String,
     @SerializedName("uri")
-    val uri: String, // sabaq-zhospary-informatika-paninen-synyp-22
+    val uri: String,
     @SerializedName("user")
-    val user: String, // Оралай Болысбекқызы
+    val user: String,
     @SerializedName("view_count")
-    val viewCount: Int // 45
+    val viewCount: Int
 ) {
     data class ClassName(
         @SerializedName("id")
-        val id: Int, // 4
+        val id: Int,
         @SerializedName("name")
-        val name: String // 2 сынып
+        val name: String
     )
 
     data class Group(
         @SerializedName("id")
-        val id: Int, // 5
+        val id: Int,
         @SerializedName("name")
-        val name: String // Сабақ жоспары
+        val name: String
     )
 
     data class Subject(
         @SerializedName("id")
-        val id: Int, // 21
+        val id: Int,
         @SerializedName("name")
-        val name: String // Информатика
+        val name: String
     )
 }
